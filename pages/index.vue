@@ -1,72 +1,11 @@
 <template>
   <div>
-    <!-- header section starts  -->
-    <header>
-      <div id="menu-bar" class="fas fa-bars"></div>
-
-      <a href="#" class="logo"><span>T</span>ravel</a>
-
-      <nav class="navbar">
-        <a href="#home">home</a>
-        <a href="#book">book</a>
-        <a href="#packages">packages</a>
-        <a href="#services">services</a>
-        <a href="#gallery">gallery</a>
-        <a href="#review">review</a>
-        <a href="#contact">contact</a>
-      </nav>
-
-      <div class="icons">
-        <i
-          class="fas fa-search"
-          id="search-btn"
-          @click="isOpenSearchBar = !isOpenSearchBar"
-        ></i>
-        <i
-          class="fas fa-user"
-          id="login-btn"
-          @click="isOpenLoginForm = !isOpenLoginForm"
-        ></i>
-      </div>
-
-      <form
-        action=""
-        :class="['search-bar-container', { active: isOpenSearchBar }]"
-      >
-        <input type="search" id="search-bar" placeholder="search here..." />
-        <label for="search-bar" class="fas fa-search"></label>
-      </form>
-    </header>
-
-    <!-- header section ends -->
-
-    <!-- login form container  -->
-
-    <div :class="['login-form-container', { active: isOpenLoginForm }]">
-      <i
-        class="fas fa-times"
-        id="form-close"
-        @click="isOpenLoginForm = false"
-      ></i>
-      <form action="">
-        <h3>login</h3>
-        <input type="email" class="box" placeholder="enter your email" />
-        <input type="password" class="box" placeholder="enter your password" />
-        <input type="submit" value="login now" class="btn" />
-        <input type="checkbox" id="remember" />
-        <label for="remember">remember me</label>
-        <p>forget password? <a href="#">click here</a></p>
-        <p>don't have and account? <a href="#">register now</a></p>
-      </form>
-    </div>
-
     <!-- home section starts  -->
-
     <section class="home" id="home">
       <div class="content">
-        <h3>adventure is worthwhile</h3>
-        <p>dicover new places with us, adventure awaits</p>
-        <a href="#" class="btn">discover more</a>
+        <h3>Du lịch Việt Nam</h3>
+        <p>khám phá những vùng đất mới, hãy đến với dịch vụ của chúng tôi</p>
+        <a href="#" class="btn">Khám Phá</a>
       </div>
 
       <div class="controls">
@@ -146,14 +85,12 @@
 
     <section class="book" id="book">
       <h1 class="heading">
-        <span>b</span>
-        <span>o</span>
-        <span>o</span>
-        <span>k</span>
+        <span>đ</span>
+        <span>ặ</span>
+        <span>t</span>
         <span class="space"></span>
-        <span>n</span>
-        <span>o</span>
-        <span>w</span>
+        <span>v</span>
+        <span>é</span>
       </h1>
 
       <div class="row">
@@ -163,19 +100,19 @@
 
         <form action="">
           <div class="inputBox">
-            <h3>where to</h3>
-            <input type="text" placeholder="place name" />
+            <h3>điểm đến</h3>
+            <input type="text" placeholder="Nhập điểm đến" />
           </div>
-          <div class="inputBox">
+          <!-- <div class="inputBox">
             <h3>how many</h3>
             <input type="number" placeholder="number of guests" />
-          </div>
+          </div> -->
           <div class="inputBox">
-            <h3>arrivals</h3>
+            <h3>Ngày khởi hành</h3>
             <input type="date" />
           </div>
           <div class="inputBox">
-            <h3>leaving</h3>
+            <h3>Ngày kết thúc</h3>
             <input type="date" />
           </div>
           <input type="submit" class="btn" value="book now" />
@@ -187,26 +124,23 @@
 
     <!-- packages section starts  -->
 
-    <section class="packages" id="packages">
+    <section class="packages" id="tours">
       <h1 class="heading">
-        <span>p</span>
-        <span>a</span>
-        <span>c</span>
-        <span>k</span>
-        <span>a</span>
-        <span>g</span>
-        <span>e</span>
-        <span>s</span>
+        <span>t</span>
+        <span>o</span>
+        <span>u</span>
+        <span>r</span>
       </h1>
 
       <div class="box-container">
         <div class="box">
           <img src="~assets/images/p-1.jpg" alt="" />
           <div class="content">
-            <h3><i class="fas fa-map-marker-alt"></i> mumbai</h3>
+            <h3><i class="fas fa-map-marker-alt"></i> Huế</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Veritatis, nam!
+              Di sản văn hóa thế giới gồm: Kỳ Đài, Ngọ Môn, lầu Ngũ Phụng, Điện
+              Thái Hoà, Thế Miếu, Cửu Đỉnh và Hiển Lâm Các – hoàng cung của 13
+              vị vua triều Nguyễn
             </p>
             <div class="stars">
               <i class="fas fa-star"></i>
@@ -215,18 +149,18 @@
               <i class="fas fa-star"></i>
               <i class="far fa-star"></i>
             </div>
-            <div class="price">$90.00 <span>$120.00</span></div>
-            <a href="#" class="btn">book now</a>
+            <div class="price">2.500.000đ <span>2.000.000đ</span></div>
+            <a href="#" class="btn">Đặt ngay</a>
           </div>
         </div>
 
         <div class="box">
           <img src="~assets/images/p-2.jpg" alt="" />
           <div class="content">
-            <h3><i class="fas fa-map-marker-alt"></i> hawaii</h3>
+            <h3><i class="fas fa-map-marker-alt"></i> Sapa</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Veritatis, nam!
+              Chương trình nghỉ tết âm lịch SAPA - Cát cát - Fansipan - Cầu kính
+              rồng mây
             </p>
             <div class="stars">
               <i class="fas fa-star"></i>
@@ -235,18 +169,20 @@
               <i class="fas fa-star"></i>
               <i class="far fa-star"></i>
             </div>
-            <div class="price">$90.00 <span>$120.00</span></div>
-            <a href="#" class="btn">book now</a>
+            <div class="price">2.500.000đ <span>2.000.000đ</span></div>
+            <a href="#" class="btn">Đặt ngay</a>
           </div>
         </div>
 
         <div class="box">
           <img src="~assets/images/p-3.jpg" alt="" />
           <div class="content">
-            <h3><i class="fas fa-map-marker-alt"></i> sydney</h3>
+            <h3><i class="fas fa-map-marker-alt"></i> hạ long</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Veritatis, nam!
+              Vịnh Hạ Long - một trong 7 kỳ quan thiên nhiên mới của thế giới -
+              nhiều lần được UNESCO công nhận là di sản thiên nhiên của thế giới
+              với hàng nghìn hòn đảo được làm nên bởi tạo hoá kỳ vĩ và sống
+              động.
             </p>
             <div class="stars">
               <i class="fas fa-star"></i>
@@ -255,18 +191,19 @@
               <i class="fas fa-star"></i>
               <i class="far fa-star"></i>
             </div>
-            <div class="price">$90.00 <span>$120.00</span></div>
-            <a href="#" class="btn">book now</a>
+            <div class="price">2.500.000đ <span>2.000.000đ</span></div>
+            <a href="#" class="btn">Đặt ngay</a>
           </div>
         </div>
 
         <div class="box">
           <img src="~assets/images/p-4.jpg" alt="" />
           <div class="content">
-            <h3><i class="fas fa-map-marker-alt"></i> paris</h3>
+            <h3><i class="fas fa-map-marker-alt"></i> hội an</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Veritatis, nam!
+              Hội an là 1 di sản văn hóa thế giới được UNESCO công nhận, gìn giữ
+              và bảo tồn được các di tích cổ cũng như truyền thống văn hóa, là 1
+              địa điểm thú vị để khám phá
             </p>
             <div class="stars">
               <i class="fas fa-star"></i>
@@ -275,18 +212,19 @@
               <i class="fas fa-star"></i>
               <i class="far fa-star"></i>
             </div>
-            <div class="price">$90.00 <span>$120.00</span></div>
-            <a href="#" class="btn">book now</a>
+            <div class="price">2.500.000đ <span>2.000.000đ</span></div>
+            <a href="#" class="btn">Đặt ngay</a>
           </div>
         </div>
 
         <div class="box">
           <img src="~assets/images/p-5.jpg" alt="" />
           <div class="content">
-            <h3><i class="fas fa-map-marker-alt"></i> tokyo</h3>
+            <h3><i class="fas fa-map-marker-alt"></i> đà nẵng</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Veritatis, nam!
+              Đà nẵng thơ mộng với cảnh đẹp tuyệt vời, với những bãi biển đẹp
+              nhất việt nam, ngoài ra đà nẵng còn được mệnh danh là nơi đáng
+              sống nhất việt nam, ngại gì mà không 1 lần ghé qua đằng nẵng
             </p>
             <div class="stars">
               <i class="fas fa-star"></i>
@@ -295,18 +233,18 @@
               <i class="fas fa-star"></i>
               <i class="far fa-star"></i>
             </div>
-            <div class="price">$90.00 <span>$120.00</span></div>
-            <a href="#" class="btn">book now</a>
+            <div class="price">2.500.000đ <span>2.000.000đ</span></div>
+            <a href="#" class="btn">Đặt ngay</a>
           </div>
         </div>
 
         <div class="box">
           <img src="~assets/images/p-6.jpg" alt="" />
           <div class="content">
-            <h3><i class="fas fa-map-marker-alt"></i> eypt</h3>
+            <h3><i class="fas fa-map-marker-alt"></i> cát bà</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Veritatis, nam!
+              Được mệnh danh là “hòn ngọc của vịnh Bắc Bộ”, Cát Bà luôn là điểm
+              đến hấp dẫn của mọi du khách.
             </p>
             <div class="stars">
               <i class="fas fa-star"></i>
@@ -315,8 +253,8 @@
               <i class="fas fa-star"></i>
               <i class="far fa-star"></i>
             </div>
-            <div class="price">$90.00 <span>$120.00</span></div>
-            <a href="#" class="btn">book now</a>
+            <div class="price">2.500.000đ <span>2.000.000đ</span></div>
+            <a href="#" class="btn">Đặt ngay</a>
           </div>
         </div>
       </div>
@@ -328,20 +266,19 @@
 
     <section class="services" id="services">
       <h1 class="heading">
-        <span>s</span>
-        <span>e</span>
-        <span>r</span>
-        <span>v</span>
-        <span>i</span>
+        <span>d</span>
+        <span>ị</span>
         <span>c</span>
-        <span>e</span>
-        <span>s</span>
+        <span>h</span>
+        <span class="space"></span>
+        <span>v</span>
+        <span>ụ</span>
       </h1>
 
       <div class="box-container">
         <div class="box">
           <i class="fas fa-hotel"></i>
-          <h3>affordable hotels</h3>
+          <h3>Giá phải chăng</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore
             commodi earum, quis voluptate exercitationem ut minima itaque iusto
@@ -350,7 +287,7 @@
         </div>
         <div class="box">
           <i class="fas fa-utensils"></i>
-          <h3>food and drinks</h3>
+          <h3>ẩm thực</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore
             commodi earum, quis voluptate exercitationem ut minima itaque iusto
@@ -359,7 +296,7 @@
         </div>
         <div class="box">
           <i class="fas fa-bullhorn"></i>
-          <h3>safty guide</h3>
+          <h3>hướng dẫn chi tiết</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore
             commodi earum, quis voluptate exercitationem ut minima itaque iusto
@@ -368,7 +305,7 @@
         </div>
         <div class="box">
           <i class="fas fa-globe-asia"></i>
-          <h3>around the world</h3>
+          <h3>Khắp việt nam</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore
             commodi earum, quis voluptate exercitationem ut minima itaque iusto
@@ -377,7 +314,7 @@
         </div>
         <div class="box">
           <i class="fas fa-plane"></i>
-          <h3>fastest travel</h3>
+          <h3>di chuyển nhanh nhất</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore
             commodi earum, quis voluptate exercitationem ut minima itaque iusto
@@ -386,7 +323,7 @@
         </div>
         <div class="box">
           <i class="fas fa-hiking"></i>
-          <h3>adventures</h3>
+          <h3>chuyến đi</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore
             commodi earum, quis voluptate exercitationem ut minima itaque iusto
@@ -402,13 +339,14 @@
 
     <section class="gallery" id="gallery">
       <h1 class="heading">
-        <span>g</span>
+        <span>đ</span>
+        <span>ị</span>
         <span>a</span>
-        <span>l</span>
-        <span>l</span>
-        <span>e</span>
-        <span>r</span>
-        <span>y</span>
+        <span class="space"></span>
+        <span>đ</span>
+        <span>i</span>
+        <span>ể</span>
+        <span>m</span>
       </h1>
 
       <div class="box-container">
@@ -532,13 +470,12 @@
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div class="box">
-              <img src="~assets/images/pic1.png" alt="" />
-              <h3>john deo</h3>
+              <img src="~assets/images/avt1.jpg" alt="" />
+              <h3>Dũng Đặng</h3>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-                adipisci quisquam sunt nesciunt fugiat odit minus illum
-                asperiores dolorum enim sint quod ipsam distinctio molestias
-                consectetur ducimus beatae, reprehenderit exercitationem!
+                Dịch vụ thật tuyệt vời, nhân viên hướng dẫn nhiệt tình, giúp
+                minh đặt được tour 1 cách dễ dàng chỉ chưa đầy 5 phút. Chuyén đi
+                này thật tuyệt vời, tôi sẽ sử dụng lại dịch vụ của công ty.
               </p>
               <div class="stars">
                 <i class="fas fa-star"></i>
@@ -551,13 +488,12 @@
           </div>
           <div class="swiper-slide">
             <div class="box">
-              <img src="~assets/images/pic2.png" alt="" />
-              <h3>john deo</h3>
+              <img src="~assets/images/avt2.jpg" alt="" />
+              <h3>Thảo Ly</h3>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-                adipisci quisquam sunt nesciunt fugiat odit minus illum
-                asperiores dolorum enim sint quod ipsam distinctio molestias
-                consectetur ducimus beatae, reprehenderit exercitationem!
+                tôi đã sử dụng dịch vụ của nhiều công ty nhưng tôi cảm nhận được
+                là dịch vụ của công ty này thật sự tuyệt vời. thật sự relax với
+                chuyến đi hạ long 2 ngày 1 đêm với gia đình
               </p>
               <div class="stars">
                 <i class="fas fa-star"></i>
@@ -571,31 +507,12 @@
           <div class="swiper-slide">
             <div class="box">
               <img src="~assets/images/pic3.png" alt="" />
-              <h3>john deo</h3>
+              <h3>cô gái tóc xanh</h3>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-                adipisci quisquam sunt nesciunt fugiat odit minus illum
-                asperiores dolorum enim sint quod ipsam distinctio molestias
-                consectetur ducimus beatae, reprehenderit exercitationem!
-              </p>
-              <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="box">
-              <img src="~assets/images/pic4.png" alt="" />
-              <h3>john deo</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-                adipisci quisquam sunt nesciunt fugiat odit minus illum
-                asperiores dolorum enim sint quod ipsam distinctio molestias
-                consectetur ducimus beatae, reprehenderit exercitationem!
+                Chuyến đi thật tuyệt vời nếu không có sự tư vấn của nhân viên
+                cũng như dịch vụ quá tuyệt vời của côn công ty du lịch. Niềm vui
+                nhân đôi khi bạn chọn được địa điểm du lịch họp lý, mà dịch vụ
+                lại trên cả tuyệt vời nữa
               </p>
               <div class="stars">
                 <i class="fas fa-star"></i>
@@ -616,13 +533,13 @@
 
     <section class="contact" id="contact">
       <h1 class="heading">
-        <span>c</span>
-        <span>o</span>
+        <span>L</span>
+        <span>i</span>
+        <span>ê</span>
         <span>n</span>
-        <span>t</span>
-        <span>a</span>
-        <span>c</span>
-        <span>t</span>
+        <span class="space"></span>
+        <span>h</span>
+        <span>ệ</span>
       </h1>
 
       <div class="row">
@@ -632,21 +549,21 @@
 
         <form action="">
           <div class="inputBox">
-            <input type="text" placeholder="name" />
-            <input type="email" placeholder="email" />
+            <input type="text" placeholder="Nhập tên" />
+            <input type="email" placeholder="Nhập email" />
           </div>
           <div class="inputBox">
-            <input type="number" placeholder="number" />
-            <input type="text" placeholder="subject" />
+            <input type="number" placeholder="Nhập số điện thoại" />
+            <input type="text" placeholder="Nhập chủ đề" />
           </div>
           <textarea
-            placeholder="message"
+            placeholder="Nội dung"
             name=""
             id=""
             cols="30"
             rows="10"
           ></textarea>
-          <input type="submit" class="btn" value="send message" />
+          <input type="submit" class="btn" value="Gửi " />
         </form>
       </div>
     </section>
@@ -657,162 +574,33 @@
     <section class="brand-container">
       <div class="swiper-container brand-slider">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img src="~assets/images/1.jpg" alt="" />
+          <div class="swiper-slide mw-100px mx-auto">
+            <img src="~assets/images/avt-bk.svg" alt="" class="w-100" />
           </div>
-          <div class="swiper-slide">
-            <img src="~assets/images/2.jpg" alt="" />
-          </div>
-          <div class="swiper-slide">
-            <img src="~assets/images/3.jpg" alt="" />
-          </div>
-          <div class="swiper-slide">
-            <img src="~assets/images/4.jpg" alt="" />
-          </div>
-          <div class="swiper-slide">
-            <img src="~assets/images/5.jpg" alt="" />
-          </div>
-          <div class="swiper-slide">
-            <img src="~assets/images/6.jpg" alt="" />
+          <div class="swiper-slide mw-100px mx-auto mt-3">
+            <img src="~assets/images/logo-soict.png" alt="" class="w-100" />
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- footer section  -->
-
-    <section class="footer">
-      <div class="box-container">
-        <div class="box">
-          <h3>about us</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
-            quas magni pariatur est accusantium voluptas enim nemo facilis sit
-            debitis.
-          </p>
-        </div>
-        <div class="box">
-          <h3>branch locations</h3>
-          <a href="#">india</a>
-          <a href="#">USA</a>
-          <a href="#">japan</a>
-          <a href="#">france</a>
-        </div>
-        <div class="box">
-          <h3>quick links</h3>
-          <a href="#">home</a>
-          <a href="#">book</a>
-          <a href="#">packages</a>
-          <a href="#">services</a>
-          <a href="#">gallery</a>
-          <a href="#">review</a>
-          <a href="#">contact</a>
-        </div>
-        <div class="box">
-          <h3>follow us</h3>
-          <a href="#">facebook</a>
-          <a href="#">instagram</a>
-          <a href="#">twitter</a>
-          <a href="#">linkedin</a>
-        </div>
-      </div>
-
-      <h1 class="credit">
-        created by <span> mr. web designer </span> | all rights reserved!
-      </h1>
     </section>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage',
   data() {
     return {
       videoIndex: 1,
-      isOpenSearchBar: false,
-      isOpenLoginForm: false,
     }
-  },
-  created() {
-    // let searchBtn = document.querySelector('#search-btn')
-    // let searchBar = document.querySelector('.search-bar-container')
-    // let formBtn = document.querySelector('#login-btn')
-    // let loginForm = document.querySelector('.login-form-container')
-    // let formClose = document.querySelector('#form-close')
-    // let menu = document.querySelector('#menu-bar')
-    // let navbar = document.querySelector('.navbar')
-    // let videoBtn = document.querySelectorAll('.vid-btn')
-    // window.onscroll = () => {
-    //   searchBtn.classList.remove('fa-times')
-    //   searchBar.classList.remove('active')
-    //   menu.classList.remove('fa-times')
-    //   navbar.classList.remove('active')
-    //   loginForm.classList.remove('active')
-    // }
-    // menu.addEventListener('click', () => {
-    //   menu.classList.toggle('fa-times')
-    //   navbar.classList.toggle('active')
-    // })
-    // searchBtn.addEventListener('click', () => {
-    //   searchBtn.classList.toggle('fa-times')
-    //   searchBar.classList.toggle('active')
-    // })
-    // formBtn.addEventListener('click', () => {
-    //   loginForm.classList.add('active')
-    // })
-    // formClose.addEventListener('click', () => {
-    //   loginForm.classList.remove('active')
-    // })
-    // videoBtn.forEach((btn) => {
-    //   btn.addEventListener('click', () => {
-    //     document.querySelector('.controls .active').classList.remove('active')
-    //     btn.classList.add('active')
-    //     let src = btn.getAttribute('data-src')
-    //     document.querySelector('#video-slider').src = src
-    //   })
-    // })
-    // var swiper = new Swiper('.review-slider', {
-    //   spaceBetween: 20,
-    //   loop: true,
-    //   autoplay: {
-    //     delay: 2500,
-    //     disableOnInteraction: false,
-    //   },
-    //   breakpoints: {
-    //     640: {
-    //       slidesPerView: 1,
-    //     },
-    //     768: {
-    //       slidesPerView: 2,
-    //     },
-    //     1024: {
-    //       slidesPerView: 3,
-    //     },
-    //   },
-    // })
-    // var swiper = new Swiper('.brand-slider', {
-    //   spaceBetween: 20,
-    //   loop: true,
-    //   autoplay: {
-    //     delay: 2500,
-    //     disableOnInteraction: false,
-    //   },
-    //   breakpoints: {
-    //     450: {
-    //       slidesPerView: 2,
-    //     },
-    //     768: {
-    //       slidesPerView: 3,
-    //     },
-    //     991: {
-    //       slidesPerView: 4,
-    //     },
-    //     1200: {
-    //       slidesPerView: 5,
-    //     },
-    //   },
-    // })
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.mw-100px {
+  max-width: 100px;
+}
+.w-100 {
+  width: 100%;
+}
+</style>

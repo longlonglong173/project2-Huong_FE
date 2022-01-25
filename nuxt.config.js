@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Travel',
+    title: 'Travel-hust',
     htmlAttrs: {
       lang: 'en',
     },
@@ -22,12 +22,14 @@ export default {
       },
     ],
   },
-  // ssr: false,
-
+  ssr: false, //csr - client side rendering
+  server: {
+    port: process.env.PORT ? process.env.PORT : 8000 // default: 3000
+  },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '~/assets/styles/resetcss.css',
-    '~/assets/styles/style.css',
+    '~/assets/styles/style.scss',
     '~/assets/styles/fontawesome/css/all.css',
   ],
 

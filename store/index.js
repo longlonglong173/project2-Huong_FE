@@ -3,6 +3,8 @@ import Vuex from 'vuex'
 import user from './modules/user'
 import common from './modules/common'
 import tour from './modules/tour'
+import admin from './modules/admin'
+
 
 
 Vue.use(Vuex)
@@ -11,7 +13,8 @@ const store = () => {
     modules: {
       user,
       common,
-      tour
+      tour,
+      admin
     },
   })
 }

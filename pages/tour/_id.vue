@@ -4,7 +4,7 @@
       <div class="col-5">
         <div
           class="tour-img bg-center w-100"
-          :style="{ 'background-image': `url('${tour.img}')` }"
+          :style="{ 'background-image': `url('${tour.img || errorImage}')` }"
         ></div>
       </div>
       <div class="tour-detail col-7">
@@ -30,7 +30,7 @@
           </div>
           <div class="d-flex py-3">
             <div class="col-4">Giá:</div>
-            <div class="col-8 p-0">{{ formatPrice(tour.price) }}đ</div>
+            <div class="col-8 p-0">{{ formatPriceVnd(tour.currentPrice) }}</div>
           </div>
           <div class="d-flex py-3">
             <div class="col-4">Ngày Khởi hành:</div>
@@ -123,6 +123,7 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
+import { FORMAT } from '~/plugins/mixin'
 export default {
   data() {
     return {
@@ -131,12 +132,13 @@ export default {
         title: '', //ten
         id: 0, // ma
         time: '', //thoiGian
-        price: 0, //gia
+        currentPrice: 0, //gia
+        oldPrice: 0, // giaCu
         startTime: '', //ngayKhoiHanh
         startLocation: '', //noiKhoiHanh
         currentSlot: 0, //slot
         vehicle: '', //phuongTien
-        location: '', //diaDiem
+        location: '', //diaDiem,
       },
       form: {
         name: '', //ten
@@ -151,6 +153,7 @@ export default {
       isDataFetched: false,
     }
   },
+  mixins: [FORMAT],
   computed: {
     ...mapState({
       errorImage: (state) => state.common.errorImage,
@@ -162,17 +165,6 @@ export default {
       setNotiContent: 'common/setNotiContent',
       getTour: 'tour/getTour',
     }),
-    formatPrice(price) {
-      return new Intl.NumberFormat('de-DE').format(price)
-    },
-    timeFormat(x) {
-      console.log(x)
-      const time = new Date(x)
-      console.log(typeof time)
-      return `ngày ${time.getDate()}, tháng ${
-        time.getMonth() + 1
-      }, năm ${time.getFullYear()}`
-    },
     async datVeHandler() {
       if (
         this.form.name == '' ||
@@ -204,17 +196,7 @@ export default {
     const { params } = this.$route
     const tourInfo = await this.getTour({ id: params.id })
     if (tourInfo.success) {
-      const data = tourInfo.data
-      this.tour.img = data.hinhAnh || this.errorImage
-      this.tour.title = data.ten || ''
-      this.tour.id = data.ma
-      this.tour.time = data.thoiGian
-      this.tour.price = data.gia || 0
-      this.tour.startTime = data.ngayKhoiHanh
-      this.tour.startLocation = data.noiKhoiHanh || ''
-      this.tour.currentSlot = data.slot || 0
-      this.tour.vehicle = data.phuongTien || ''
-      this.tour.location = data.diaDiem || ''
+      this.tour = tourInfo.data
       this.isDataFetched = true
     } else {
       this.setNotiContent(`Không tìm thấy tour ${params.id} tương ứng`)

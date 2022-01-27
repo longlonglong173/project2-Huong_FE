@@ -131,131 +131,13 @@
         <span>u</span>
         <span>r</span>
       </h1>
-
-      <div class="box-container">
-        <div class="box">
-          <img src="~assets/images/p-1.jpg" alt="" />
-          <div class="content">
-            <h3><i class="fas fa-map-marker-alt"></i> Huế</h3>
-            <p>
-              Di sản văn hóa thế giới gồm: Kỳ Đài, Ngọ Môn, lầu Ngũ Phụng, Điện
-              Thái Hoà, Thế Miếu, Cửu Đỉnh và Hiển Lâm Các – hoàng cung của 13
-              vị vua triều Nguyễn
-            </p>
-            <div class="stars">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="far fa-star"></i>
-            </div>
-            <div class="price">2.500.000đ <span>2.000.000đ</span></div>
-            <a href="#" class="btn">Đặt ngay</a>
-          </div>
-        </div>
-
-        <div class="box">
-          <img src="~assets/images/p-2.jpg" alt="" />
-          <div class="content">
-            <h3><i class="fas fa-map-marker-alt"></i> Sapa</h3>
-            <p>
-              Chương trình nghỉ tết âm lịch SAPA - Cát cát - Fansipan - Cầu kính
-              rồng mây
-            </p>
-            <div class="stars">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="far fa-star"></i>
-            </div>
-            <div class="price">2.500.000đ <span>2.000.000đ</span></div>
-            <a href="#" class="btn">Đặt ngay</a>
-          </div>
-        </div>
-
-        <div class="box">
-          <img src="~assets/images/p-3.jpg" alt="" />
-          <div class="content">
-            <h3><i class="fas fa-map-marker-alt"></i> hạ long</h3>
-            <p>
-              Vịnh Hạ Long - một trong 7 kỳ quan thiên nhiên mới của thế giới -
-              nhiều lần được UNESCO công nhận là di sản thiên nhiên của thế giới
-              với hàng nghìn hòn đảo được làm nên bởi tạo hoá kỳ vĩ và sống
-              động.
-            </p>
-            <div class="stars">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="far fa-star"></i>
-            </div>
-            <div class="price">2.500.000đ <span>2.000.000đ</span></div>
-            <a href="#" class="btn">Đặt ngay</a>
-          </div>
-        </div>
-
-        <div class="box">
-          <img src="~assets/images/p-4.jpg" alt="" />
-          <div class="content">
-            <h3><i class="fas fa-map-marker-alt"></i> hội an</h3>
-            <p>
-              Hội an là 1 di sản văn hóa thế giới được UNESCO công nhận, gìn giữ
-              và bảo tồn được các di tích cổ cũng như truyền thống văn hóa, là 1
-              địa điểm thú vị để khám phá
-            </p>
-            <div class="stars">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="far fa-star"></i>
-            </div>
-            <div class="price">2.500.000đ <span>2.000.000đ</span></div>
-            <a href="#" class="btn">Đặt ngay</a>
-          </div>
-        </div>
-
-        <div class="box">
-          <img src="~assets/images/p-5.jpg" alt="" />
-          <div class="content">
-            <h3><i class="fas fa-map-marker-alt"></i> đà nẵng</h3>
-            <p>
-              Đà nẵng thơ mộng với cảnh đẹp tuyệt vời, với những bãi biển đẹp
-              nhất việt nam, ngoài ra đà nẵng còn được mệnh danh là nơi đáng
-              sống nhất việt nam, ngại gì mà không 1 lần ghé qua đằng nẵng
-            </p>
-            <div class="stars">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="far fa-star"></i>
-            </div>
-            <div class="price">2.500.000đ <span>2.000.000đ</span></div>
-            <a href="#" class="btn">Đặt ngay</a>
-          </div>
-        </div>
-
-        <div class="box">
-          <img src="~assets/images/p-6.jpg" alt="" />
-          <div class="content">
-            <h3><i class="fas fa-map-marker-alt"></i> cát bà</h3>
-            <p>
-              Được mệnh danh là “hòn ngọc của vịnh Bắc Bộ”, Cát Bà luôn là điểm
-              đến hấp dẫn của mọi du khách.
-            </p>
-            <div class="stars">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="far fa-star"></i>
-            </div>
-            <div class="price">2.500.000đ <span>2.000.000đ</span></div>
-            <a href="#" class="btn">Đặt ngay</a>
-          </div>
+      <div class="box-container d-flex flex-wrap">
+        <div
+          v-for="tour in topToutList"
+          :key="`topTour-${tour.id}`"
+          class="col-4"
+        >
+          <TourCard :tour="tour" />
         </div>
       </div>
     </section>
@@ -280,54 +162,48 @@
           <i class="fas fa-hotel"></i>
           <h3>Giá phải chăng</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore
-            commodi earum, quis voluptate exercitationem ut minima itaque iusto
-            ipsum corrupti!
+            Dịch vụ của chúng tôi luôn có giá cả hợp lý với túi tiền cũng như
+            nhu cầu của khách hàng.
           </p>
         </div>
         <div class="box">
           <i class="fas fa-utensils"></i>
           <h3>ẩm thực</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore
-            commodi earum, quis voluptate exercitationem ut minima itaque iusto
-            ipsum corrupti!
+            Ẩm thực phong phú, bổ dưỡng, chúng tôi luôn chọn nhà hàng tốt nhất
+            cho khách hàng.
           </p>
         </div>
         <div class="box">
           <i class="fas fa-bullhorn"></i>
           <h3>hướng dẫn chi tiết</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore
-            commodi earum, quis voluptate exercitationem ut minima itaque iusto
-            ipsum corrupti!
+            hướng dẫn viên nhiệt tình và dày dặn kinh nghiệm, truyền đạt trọn
+            vẹn được giá trị của tour du lịch mang lại.
           </p>
         </div>
         <div class="box">
           <i class="fas fa-globe-asia"></i>
           <h3>Khắp việt nam</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore
-            commodi earum, quis voluptate exercitationem ut minima itaque iusto
-            ipsum corrupti!
+            Hoạt dộng khắp Việt Nam, luôn lựa chọn những điểm du lịch độc đáo và
+            đẹp nhất Việt Nam.
           </p>
         </div>
         <div class="box">
           <i class="fas fa-plane"></i>
           <h3>di chuyển nhanh nhất</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore
-            commodi earum, quis voluptate exercitationem ut minima itaque iusto
-            ipsum corrupti!
+            đầy đủ phương tiện từ hàng không đến đường thủy, quãng đường di
+            chuyển hợp lý, an toàn và nhanh chóng nhất.
           </p>
         </div>
         <div class="box">
           <i class="fas fa-hiking"></i>
           <h3>chuyến đi</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore
-            commodi earum, quis voluptate exercitationem ut minima itaque iusto
-            ipsum corrupti!
+            mang lại chuyến đi tuyệt vời nhất cho khách hàng. chúng tôi luôn đặt
+            trải nghiệm của khách hàn hàng lên trên hết.
           </p>
         </div>
       </div>
@@ -350,103 +226,18 @@
       </h1>
 
       <div class="box-container">
-        <div class="box">
-          <img src="~assets/images/g-1.jpg" alt="" />
+        <div
+          v-for="(location, index) in topLocationList"
+          :key="`location-${index}`"
+          class="box"
+        >
+          <img :src="location.img" alt="" />
           <div class="content">
-            <h3>amazing places</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus,
-              tenetur.
+            <h3>{{ location.location }}</h3>
+            <p class="line-clamp-3">
+              {{ location.sumary }}
             </p>
-            <a href="#" class="btn">see more</a>
-          </div>
-        </div>
-        <div class="box">
-          <img src="~assets/images/g-2.jpg" alt="" />
-          <div class="content">
-            <h3>amazing places</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus,
-              tenetur.
-            </p>
-            <a href="#" class="btn">see more</a>
-          </div>
-        </div>
-        <div class="box">
-          <img src="~assets/images/g-3.jpg" alt="" />
-          <div class="content">
-            <h3>amazing places</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus,
-              tenetur.
-            </p>
-            <a href="#" class="btn">see more</a>
-          </div>
-        </div>
-        <div class="box">
-          <img src="~assets/images/g-4.jpg" alt="" />
-          <div class="content">
-            <h3>amazing places</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus,
-              tenetur.
-            </p>
-            <a href="#" class="btn">see more</a>
-          </div>
-        </div>
-        <div class="box">
-          <img src="~assets/images/g-5.jpg" alt="" />
-          <div class="content">
-            <h3>amazing places</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus,
-              tenetur.
-            </p>
-            <a href="#" class="btn">see more</a>
-          </div>
-        </div>
-        <div class="box">
-          <img src="~assets/images/g-6.jpg" alt="" />
-          <div class="content">
-            <h3>amazing places</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus,
-              tenetur.
-            </p>
-            <a href="#" class="btn">see more</a>
-          </div>
-        </div>
-        <div class="box">
-          <img src="~assets/images/g-7.jpg" alt="" />
-          <div class="content">
-            <h3>amazing places</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus,
-              tenetur.
-            </p>
-            <a href="#" class="btn">see more</a>
-          </div>
-        </div>
-        <div class="box">
-          <img src="~assets/images/g-8.jpg" alt="" />
-          <div class="content">
-            <h3>amazing places</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus,
-              tenetur.
-            </p>
-            <a href="#" class="btn">see more</a>
-          </div>
-        </div>
-        <div class="box">
-          <img src="~assets/images/g-9.jpg" alt="" />
-          <div class="content">
-            <h3>amazing places</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus,
-              tenetur.
-            </p>
-            <a href="#" class="btn">see more</a>
+            <a href="#" class="btn">Xem thêm</a>
           </div>
         </div>
       </div>
@@ -587,10 +378,117 @@
 </template>
 
 <script>
+import TourCard from '~/components/TourCard.vue'
 export default {
+  components: {
+    TourCard,
+  },
   data() {
     return {
       videoIndex: 1,
+      topToutList: [
+        {
+          id: '1',
+          img: 'https://thuathienhue.gov.vn/Portals/0/Medias/Nam2021/T6/2021_06_11Ditich.jpg',
+          location: 'Huế',
+          info: 'Di sản văn hóa thế giới gồm: Kỳ Đài, Ngọ Môn, lầu Ngũ Phụng, Điện Thái Hoà, Thế Miếu, Cửu Đỉnh và Hiển Lâm Các – hoàng cung của 13 vị vua triều Nguyễn',
+          currentPrice: 2000000,
+          oldPrice: 2500000,
+          stars: 4,
+        },
+        {
+          id: '2',
+          img: 'https://vietsensetravel.com/view/at_sapa-mua-dong-co-gi-dep-co-nen-di-sapa-vao-mua-dong_dcf760d384f760e039b92456d8d5685f.jpg',
+          location: 'Sapa',
+          info: 'Chương trình nghỉ tết âm lịch SAPA - Cát cát - Fansipan - Cầu kính rồng mây',
+          currentPrice: 2000000,
+          oldPrice: 2500000,
+          stars: 5,
+        },
+        {
+          id: '3',
+          img: 'https://timchuyenbay.com/assets/uploads/2020/12/vinh-ha-long-5e563331d21df-848x477-1.jpg',
+          location: 'hạ long',
+          info: 'Vịnh Hạ Long - một trong 7 kỳ quan thiên nhiên mới của thế giới - nhiều lần được UNESCO công nhận là di sản thiên nhiên của thế giới với hàng nghìn hòn đảo được làm nên bởi tạo hoá kỳ vĩ và sống động.',
+          currentPrice: 2000000,
+          oldPrice: 2500000,
+          stars: 4,
+        },
+        {
+          id: '4',
+          img: 'https://cdnmedia.thethaovanhoa.vn/Upload/tyTrfgkgEUQwPYuvZ4Kn1g/files/2019/07/1607/hoi-an.jpg',
+          location: 'hội an',
+          info: 'Hội an là 1 di sản văn hóa thế giới được UNESCO công nhận, gìn giữ và bảo tồn được các di tích cổ cũng như truyền thống văn hóa, là 1 địa điểm thú vị để khám phá',
+          currentPrice: 2000000,
+          oldPrice: 2500000,
+          stars: 4,
+        },
+        {
+          id: '5',
+          img: 'https://media.ex-cdn.com/EXP/media.taichinhdoanhnghiep.net.vn/files/thanhtan/2020/06/30/kinh-nghiem-du-loch-da-nang-0-1138.jpg',
+          location: 'đà nẵng',
+          info: 'Đà nẵng thơ mộng với cảnh đẹp tuyệt vời, với những bãi biển đẹp nhất việt nam, ngoài ra đà nẵng còn được mệnh danh là nơi đáng sống nhất việt nam, ngại gì mà không 1 lần ghé qua đằng nẵng',
+          currentPrice: 2000000,
+          oldPrice: 2500000,
+          stars: 5,
+        },
+        {
+          id: '6',
+          img: 'https://dulichkhatvongviet.com/wp-content/uploads/2019/03/du-lich-cat-ba.jpg',
+          location: 'cát bà',
+          info: 'Được mệnh danh là “hòn ngọc của vịnh Bắc Bộ”, Cát Bà luôn là điểm đến hấp dẫn của mọi du khách.',
+          currentPrice: 2000000,
+          oldPrice: 2500000,
+          stars: 4,
+        },
+      ],
+      topLocationList: [
+        {
+          img: 'https://statics.vinpearl.com/diem-du-lich-2_1632671014.jpg',
+          location: 'Hạ Long',
+          sumary: 'một trong những điểm đến hấp dẫn bậc nhất nước ta',
+        },
+        {
+          img: 'https://statics.vinpearl.com/diem-du-lich-3_1632662626.jpg',
+          location: 'Hội An',
+          sumary: 'nhiều thắng cảnh đẹp cùng nền ẩm thực độc đáo',
+        },
+        {
+          img: 'https://statics.vinpearl.com/diem-du-lich-02_1632672193.jpg',
+          location: 'Quảng Bình',
+          sumary: 'Quảng Bình là địa đến thú vị với bãi biển hoang sơ, hang động độc đáo, núi sông hùng vĩ cùng nhiều món đặc sản thơm ngon',
+        },
+        {
+          img: 'https://statics.vinpearl.com/diem-du-lich-5_1632662666.jpg',
+          location: 'Hà Nội',
+          sumary: 'Thủ đô Hà Nội ngàn năm văn hiến là một trong những nơi mà bất kỳ người Việt Nam nào cũng muốn được đặt chân đến một lần',
+        },
+        {
+          img: 'https://statics.vinpearl.com/diem-du-lich-6_1632662692.jpg',
+          location: 'Đà Nẵng',
+          sumary: 'thành phố của nhiều cây cầu đẹp như cầu sông Hàn, cầu Rồng, cầu Thuận Phước, cầu tình yêu',
+        },
+        {
+          img: 'https://statics.vinpearl.com/diem-du-lich-8_1632662742.jpg',
+          location: 'Vũng Tàu',
+          sumary: 'Vũng Tàu có bờ biển trải dài, cảnh quan đẹp, cùng nhiều địa danh chứa đựng giá trị văn hóa',
+        },
+        {
+          img: 'https://statics.vinpearl.com/diem-du-lich-9_1632662759.jpg',
+          location: 'Nha Trang',
+          sumary: 'Vẻ đẹp tựa như tranh của địa điểm du lịch Nha Trang để lại ấn tượng khó phai trong lòng du khách',
+        },
+        {
+          img: 'https://statics.vinpearl.com/diem-du-lich-10_1632662781.jpg',
+          location: 'Huế',
+          sumary: 'vẻ đẹp trầm mặc, mộng mơ cùng nhiều giá trị văn hóa, lịch sử lâu đời',
+        },
+        {
+          img: 'https://statics.vinpearl.com/diem-du-lich-04_1632671710.jpg',
+          location: 'Đà Lạt',
+          sumary: 'Với cảnh đẹp thơ mộng, khí hậu mát mẻ cùng nhiều món ăn ngon',
+        },
+      ],
     }
   },
 }

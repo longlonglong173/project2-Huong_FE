@@ -1,5 +1,5 @@
 <template>
-  <div v-if="tour" class="tour-box p-4 border-radius-16 bg-white font-24 w-100">
+  <div v-if="tour" class="tour-box p-4 br-16 bg-white font-24 w-100">
     <div class="d-flex justify-content-between mb-4">
       <h3 class="font-32 font-weight-bold d-flex">
         Chi tiết tour {{ tour.id }}
@@ -196,7 +196,6 @@
         </div>
       </div>
     </div>
-    <!-- <Modal :value="isOpenModal" @close="colseModalHandler()"> </Modal> -->
     <ConfirmBox
       :value="isOpenModal"
       message="Bạn có đồng ý xóa tour này không?"
@@ -209,11 +208,10 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 import { FORMAT } from '~/plugins/mixin'
-import Modal from '~/components/Modal.vue'
 import ConfirmBox from '~/components/ConfirmBox.vue'
 
 export default {
-  components: { Modal, ConfirmBox },
+  components: { ConfirmBox },
   props: {
     tour: {
       type: Object,

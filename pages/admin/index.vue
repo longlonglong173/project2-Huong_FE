@@ -1,116 +1,32 @@
 <template>
-  <div v-if="isDataFetched" class="p-4">
+  <div class="p-4">
     <div v-show="navLeftSelected == 0">
-      <div class="font-64 text-center">Danh sách tour</div>
-      <div class="d-flex justify-content-end mb-3">
-        <div class="btn p-1 flex-center" @click="isOpenModalAddTour = true">
-          <i class="fal fa-map-marker-plus mr-1 font-32"></i> Thêm tour mới
-        </div>
-      </div>
-      <div class="d-flex flex-wrap">
-        <div
-          v-for="tour in tourList"
-          :key="`tour-${tour.id}`"
-          class="col-3 mb-4"
-        >
-          <TourCard
-            :tour="tour"
-            :isAdmin="true"
-            @showDetail="showTourDetailHandler(tour)"
-          />
-        </div>
-      </div>
+      <TourList />
     </div>
     <div v-show="navLeftSelected == 1">
-      <div class="font-64 text-center">Danh sách khách hàng</div>
+      <UserList />
     </div>
-    <Modal
-      :value="isOpenModalTourDetail"
-      modalClass="flex-center"
-      bodyClass=""
-      @close="closeDetailHandler(false)"
-    >
-      <EditTour
-        :tour="tourDetail"
-        @close="closeDetailHandler(false)"
-        @update="getTourListData(0, tourList.length)"
-        @delete="getTourListData(0, tourList.length - 1)"
-      />
-    </Modal>
-    <Modal
-      :value="isOpenModalAddTour"
-      modalClass="flex-center"
-      @close="closeDetailHandler(false)"
-    >
-      <AddTour
-        @close="closeDetailHandler(false)"
-        @addSuccess="getTourListData(0, tourList.length + 1)"
-      />
-    </Modal>
+    <div v-show="navLeftSelected == 2">
+      <div class="font-64 text-center">Danh sách đặt vé</div>
+    </div>
   </div>
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
-import TourCard from '~/components/TourCard.vue'
-import Modal from '~/components/Modal.vue'
-import EditTour from '~/components/admin/EditTour.vue'
-import AddTour from '~/components/admin/AddTour.vue'
+import TourList from '~/components/admin/TourList.vue'
+import UserList from '~/components/admin/UserList.vue'
 
+import { mapState } from 'vuex'
 export default {
   layout: 'admin',
   components: {
-    TourCard,
-    Modal,
-    EditTour,
-    AddTour,
-  },
-  data() {
-    return {
-      isDataFetched: false,
-      tourList: [],
-      tourDetail: null,
-      isOpenModalTourDetail: false,
-      isOpenModalAddTour: false,
-    }
+    TourList,
+    UserList,
   },
   computed: {
     ...mapState({
       navLeftSelected: (state) => state.admin.navLeftSelected,
     }),
-  },
-  methods: {
-    ...mapActions({
-      getTourList: 'tour/getTourList',
-    }),
-    showTourDetailHandler(tour) {
-      this.tourDetail = tour
-      this.isOpenModalTourDetail = true
-    },
-    closeDetailHandler(value) {
-      this.tourDetail = null
-      this.isOpenModalTourDetail = value
-      this.isOpenModalAddTour = value
-    },
-    async getTourListData(index, count) {
-      const res = await this.getTourList({
-        index: index,
-        count: count + 1,
-      })
-      if (res.success) {
-        this.tourList = res.data
-      }
-    },
-  },
-  async created() {
-    const res = await this.getTourList({
-      index: 0,
-      count: 20,
-    })
-    if (res.success) {
-      this.tourList = res.data
-      this.isDataFetched = true
-    }
   },
 }
 </script>

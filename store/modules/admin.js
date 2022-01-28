@@ -1,48 +1,144 @@
-// import axiosClient from '~/api/axiosClient'
+import axiosClient from '~/api/axiosClient'
 export default {
-    namespaced: true,
-    state() {
+  namespaced: true,
+  state() {
+    return {
+      navLeftSelected: 0,
+    }
+  },
+
+  getters: {},
+
+  mutations: {},
+
+  actions: {
+    async getUserList(ctx, { index, count }) {
+      try {
+        const res = await axiosClient.get('/layDanhSachNguoiDung', {
+          index: index || 0,
+          count: count || 20,
+        })
         return {
-          navLeftSelected: 0
+          ...res,
+          data: res.data.map((user) => ({
+            id: user.ma,
+            name: user.ten || '',
+            cccd: user.cccd || '',
+            gender: user.gioiTinh || 'nam',
+            phonenumber: user.soDT || '',
+            email: user.email || '',
+            address: user.diaChi || '',
+            role: user.vai || 'CLIENT',
+            token: user.token || null,
+          })),
+          success: true,
+        }
+      } catch (error) {
+        return {
+          ...error,
+          success: false,
+        }
       }
     },
-  
-    getters: {},
-  
-    mutations: {
-      // setState(state, data) {
-      //   for (const propertyName in state) {
-      //     if (!_.isUndefined(data[propertyName])) {
-      //       if (propertyName === 'systemError') {
-      //         switch (data[propertyName]) {
-      //           case 'Incorrect username or password.':
-      //             state[propertyName] =
-      //               'メールアドレス或いはパスワードに誤りがあります。'
-      //             break
-      //           case 'Password attempts exceeded':
-      //             state[propertyName] = 'パスワードの試行回数を超えました。'
-      //             break
-      //           case 'User is not confirmed.':
-      //             state[propertyName] = '認証の確認が取れていません。'
-      //             break
-      //           default:
-      //             state[propertyName] = data[propertyName]
-      //         }
-      //       } else {
-      //         state[propertyName] = data[propertyName]
-      //       }
-      //     }
-      //   }
-      // },
-    },
-  
-    actions: {
-    },
-    mutations: {
-        setNavLeftSelected(state, data) {
-            state.navLeftSelected = data
+    async addUser(ctx, payload) {
+      try {
+        const res = await axiosClient.post('/themNguoiDung', {
+          maSoDN: payload.username || '',
+          matKhau: payload.password || '',
+          ten: payload.name || '',
+          gioiTinh: payload.gender || '',
+          soDT: payload.phonenumber || '',
+          email: payload.email || '',
+          diachi: payload.address || '',
+          cccd: payload.cccd || '',
+        })
+        return {
+          ...res,
+          data: {
+            id: res.data.ma,
+            name: res.data.ten || '',
+            cccd: res.data.cccd || '',
+            gender: res.data.gioiTinh || 'nam',
+            phonenumber: res.data.soDT || '',
+            email: res.data.email || '',
+            address: res.data.diaChi || '',
+            role: res.data.vai || 'CLIENT',
+            token: res.data.token || null,
+          },
+          success: true,
         }
-
-    }
-  }
-  
+      } catch (error) {
+        return {
+          ...error,
+          success: false,
+        }
+      }
+    },
+    async updateUser(ctx, payload) {
+      try {
+        const data = {
+          ma: payload.id,
+          ten: payload.name || '',
+          cccd: payload.cccd || '',
+          gioiTinh: payload.gender || '',
+          soDT: payload.phonenumber || '',
+          email: payload.email || '',
+          diaChi: payload.address || '',
+        }
+        const res = await axiosClient.post('/suaNguoiDung', { ...data })
+        return {
+          ...res,
+          data: {
+            id: res.data.ma,
+            name: res.data.ten || '',
+            cccd: res.data.cccd || '',
+            gender: res.data.gioiTinh || 'nam',
+            phonenumber: res.data.soDT || '',
+            email: res.data.email || '',
+            address: res.data.diaChi || '',
+            role: res.data.vai || 'CLIENT',
+            token: res.data.token || null,
+          },
+          success: true,
+        }
+      } catch (error) {
+        return {
+          ...error,
+          success: false,
+        }
+      }
+    },
+    async deleteUser(ctx, { id }) {
+      try {
+        const res = await axiosClient.post('/xoaNguoiDung', {
+          ma: id,
+        })
+        return {
+          ...res,
+          success: true,
+        }
+      } catch (error) {
+        return { ...error, success: false }
+      }
+    },
+    async setRole(ctx, { id, role }) {
+      try {
+        const res = await axiosClient.post('/setVai', {
+          ma: id,
+          vai: role,
+        })
+        return {
+          ...res,
+          success: true,
+        }
+      } catch (error) {
+        return { ...error, success: false }
+      }
+    },
+  },
+  mutations: {
+    setNavLeftSelected(state, data) {
+      state.navLeftSelected = data
+    },
+  },
+}

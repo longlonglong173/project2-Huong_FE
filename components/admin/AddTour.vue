@@ -144,9 +144,7 @@
           </div>
         </div>
         <div v-show="isEdit" class="w-100 d-flex justify-content-end">
-          <div class="btn w-fit" @click="addTourHandler()">
-            Cập nhật thông tin
-          </div>
+          <div class="btn w-fit" @click="addTourHandler()">Thêm tour</div>
         </div>
       </div>
     </div>

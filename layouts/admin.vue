@@ -26,6 +26,15 @@
       >
         <i class="fal fa-users"></i> Clients
       </div>
+      <div
+        :class="[
+          'nav-item font-32 text-white border-bottom-gray w-100 mb-4 cursor-pointer',
+          navLeftSelected == 2 ? 'nav-selected' : '',
+        ]"
+        @click="setNavLeftSelected(2)"
+      >
+        <i class="fal fa-ticket-alt"></i> Tikets
+      </div>
     </div>
     <nuxt class="content-box" />
   </div>

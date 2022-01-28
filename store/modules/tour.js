@@ -76,6 +76,48 @@ export default {
         return error
       }
     },
+    async addTour(
+      ctx,
+      {
+        img,
+        title,
+        time,
+        currentPrice,
+        oldPrice,
+        startTime,
+        startLocation,
+        location,
+        currentSlot,
+        vehicle,
+        info,
+      }
+    ) {
+      try {
+        console.log('ok')
+        const res = await axiosClient.post('/themTour', {
+          hinhAnh: img,
+          ten: title,
+          thoiGian: time,
+          ngayKhoiHanh: startTime,
+          phuongTien: vehicle,
+          giaHienTai: currentPrice,
+          giaCu: oldPrice,
+          diaDiem: location,
+          chiTiet: info,
+          slot: currentSlot,
+          noiKhoiHanh: startLocation,
+        })
+        return {
+          ...res,
+          success: true,
+        }
+      } catch (error) {
+        return {
+          ...error,
+          success: false,
+        }
+      }
+    },
     async updateTour(
       ctx,
       {
@@ -107,6 +149,23 @@ export default {
           chiTiet: info,
           slot: currentSlot,
           noiKhoiHanh: startLocation,
+        })
+        return {
+          ...res,
+          success: true,
+        }
+      } catch (error) {
+        return {
+          ...error,
+          success: false,
+        }
+      }
+    },
+
+    async deleteTour(ctx, { id }) {
+      try {
+        const res = await axiosClient.post('/xoaTour', {
+          ma: id,
         })
         return {
           ...res,

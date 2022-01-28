@@ -2,6 +2,11 @@
   <div v-if="isDataFetched" class="p-4">
     <div v-show="navLeftSelected == 0">
       <div class="font-64 text-center">Danh sách tour</div>
+      <div class="d-flex justify-content-end mb-3">
+        <div class="btn p-1 flex-center" @click="isOpenModalAddTour = true">
+          <i class="fal fa-map-marker-plus mr-1 font-32"></i> Thêm tour mới
+        </div>
+      </div>
       <div class="d-flex flex-wrap">
         <div
           v-for="tour in tourList"
@@ -20,12 +25,27 @@
       <div class="font-64 text-center">Danh sách khách hàng</div>
     </div>
     <Modal
-      :value="isOpenModal"
+      :value="isOpenModalTourDetail"
       modalClass="flex-center"
       bodyClass=""
       @close="closeDetailHandler(false)"
     >
-      <TourEdit :tour="tourDetail" @close="closeDetailHandler(false)" />
+      <EditTour
+        :tour="tourDetail"
+        @close="closeDetailHandler(false)"
+        @update="getTourListData(0, tourList.length)"
+        @delete="getTourListData(0, tourList.length - 1)"
+      />
+    </Modal>
+    <Modal
+      :value="isOpenModalAddTour"
+      modalClass="flex-center"
+      @close="closeDetailHandler(false)"
+    >
+      <AddTour
+        @close="closeDetailHandler(false)"
+        @addSuccess="getTourListData(0, tourList.length + 1)"
+      />
     </Modal>
   </div>
 </template>
@@ -34,21 +54,24 @@
 import { mapActions, mapState } from 'vuex'
 import TourCard from '~/components/TourCard.vue'
 import Modal from '~/components/Modal.vue'
-import TourEdit from '~/components/admin/TourEdit.vue'
+import EditTour from '~/components/admin/EditTour.vue'
+import AddTour from '~/components/admin/AddTour.vue'
 
 export default {
   layout: 'admin',
   components: {
     TourCard,
     Modal,
-    TourEdit,
+    EditTour,
+    AddTour,
   },
   data() {
     return {
       isDataFetched: false,
       tourList: [],
       tourDetail: null,
-      isOpenModal: false,
+      isOpenModalTourDetail: false,
+      isOpenModalAddTour: false,
     }
   },
   computed: {
@@ -62,11 +85,21 @@ export default {
     }),
     showTourDetailHandler(tour) {
       this.tourDetail = tour
-      this.isOpenModal = true
+      this.isOpenModalTourDetail = true
     },
     closeDetailHandler(value) {
       this.tourDetail = null
-      this.isOpenModal = value
+      this.isOpenModalTourDetail = value
+      this.isOpenModalAddTour = value
+    },
+    async getTourListData(index, count) {
+      const res = await this.getTourList({
+        index: index,
+        count: count + 1,
+      })
+      if (res.success) {
+        this.tourList = res.data
+      }
     },
   },
   async created() {

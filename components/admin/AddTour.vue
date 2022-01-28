@@ -1,16 +1,7 @@
 <template>
-  <div v-if="tour" class="tour-box p-4 border-radius-16 bg-white font-24 w-100">
+  <div class="tour-box p-4 border-radius-16 bg-white font-24 w-100">
     <div class="d-flex justify-content-between mb-4">
-      <h3 class="font-32 font-weight-bold d-flex">
-        Chi tiết tour {{ tour.id }}
-        <div
-          class="cursor-pointer ml-3"
-          @click="isEdit = !isEdit"
-          title="Chỉnh sửa tour"
-        >
-          <i class="fal fa-edit text-error"></i>
-        </div>
-      </h3>
+      <h3 class="font-32 font-weight-bold d-flex">Thêm tour mới</h3>
       <div class="cursor-pointer" @click="$emit('close')">
         <i class="fal fa-times-circle font-24"></i>
       </div>
@@ -20,166 +11,140 @@
         <div
           class="pb-100 bg-center"
           :style="{
-            'background-image': `url('${tourDetail.img || errorImage}')`,
+            'background-image': `url('${newTour.img || errorImage}')`,
           }"
         ></div>
-        <div v-if="isEdit">
-          <h3>Thêm link hỉnh ảnh vào ô dưới đây</h3>
+        <div>
+          <h3 class="mt-3">
+            Thêm link hỉnh ảnh vào ô dưới đây <span class="text-error">*</span>
+          </h3>
           <input
             type="text"
             class="w-100 border-gray p-2"
             placeholder="Thêm link hình ảnh"
-            v-model="tourDetail.img"
+            v-model="newTour.img"
           />
         </div>
       </div>
       <div class="col-7">
         <div class="w-100 d-flex py-2 border-bottom-gray">
-          <div class="col-4 p-0">Tên tour:</div>
+          <div class="col-4 p-0">
+            Tên tour<span class="text-error">*</span>:
+          </div>
           <div class="col-8 pr-0">
             <input
-              v-if="isEdit"
               type="text"
               class="font-weight-bold font-32 border-gray mw-100"
-              v-model="tourDetail.title"
+              v-model="newTour.title"
             />
-            <h3 v-else class="font-weight-bold mb-0 font-32 mb-0">
-              {{ tourDetail.title }}
-            </h3>
           </div>
         </div>
         <div class="w-100 d-flex py-2 border-bottom-gray">
-          <div class="col-4 p-0">Địa điểm:</div>
+          <div class="col-4 p-0">
+            Địa điểm<span class="text-error">*</span>:
+          </div>
           <div class="col-8 pr-0">
             <input
-              v-if="isEdit"
               type="text"
               class="font-weight-bold font-32 border-gray mw-100"
-              v-model="tourDetail.location"
+              v-model="newTour.location"
             />
-            <h3 v-else class="font-weight-bold mb-0 font-32 mb-0">
-              {{ tourDetail.location }}
-            </h3>
           </div>
         </div>
         <div class="w-100 d-flex py-2 border-bottom-gray">
-          <div class="col-4 p-0">Thời gian:</div>
+          <div class="col-4 p-0">
+            Thời gian<span class="text-error">*</span>:
+          </div>
           <div class="col-8 pr-0">
             <input
-              v-if="isEdit"
               type="number"
               min="1"
               class="font-weight-bold font-32 border-gray mw-100"
-              v-model="tourDetail.time"
+              v-model="newTour.time"
             />
-            <h3 v-else class="font-weight-bold mb-0 font-32 mb-0">
-              {{ tourDetail.time }}
-            </h3>
           </div>
         </div>
         <div class="w-100 d-flex py-2 border-bottom-gray">
-          <div class="col-4 p-0">Ngày bắt đầu:</div>
+          <div class="col-4 p-0">
+            Ngày bắt đầu <span class="text-error">*</span>:
+          </div>
           <div class="col-8 pr-0">
             <input
-              v-if="isEdit"
               type="date"
               class="font-weight-bold font-32 border-gray mw-100"
-              v-model="tourDetail.startTime"
+              v-model="newTour.startTime"
             />
-            <h3 v-else class="font-weight-bold mb-0 font-32 mb-0">
-              {{ timeFormat(tourDetail.startTime) }}
-            </h3>
           </div>
         </div>
         <div class="w-100 d-flex py-2 border-bottom-gray">
           <div class="col-4 p-0">Giá hiện tại:</div>
           <div class="col-8 pr-0">
             <input
-              v-if="isEdit"
               type="number"
               min="0"
               class="font-weight-bold font-32 border-gray mw-100"
-              v-model="tourDetail.currentPrice"
+              v-model="newTour.currentPrice"
             />
-            <h3 v-else class="font-weight-bold mb-0 font-32 mb-0">
-              {{ formatPriceVnd(tourDetail.currentPrice) }}
-            </h3>
           </div>
         </div>
         <div class="w-100 d-flex py-2 border-bottom-gray">
           <div class="col-4 p-0">Giá cũ:</div>
           <div class="col-8 pr-0">
             <input
-              v-if="isEdit"
               type="number"
               min="0"
               class="font-weight-bold font-32 border-gray mw-100"
-              v-model="tourDetail.oldPrice"
+              v-model="newTour.oldPrice"
             />
-            <h3 v-else class="font-weight-bold mb-0 font-32 mb-0">
-              {{ formatPriceVnd(tourDetail.oldPrice) }}
-            </h3>
           </div>
         </div>
         <div class="w-100 d-flex py-2 border-bottom-gray">
-          <div class="col-4 p-0">Nơi khởi hành:</div>
+          <div class="col-4 p-0">
+            Nơi khởi hành<span class="text-error">*</span>:
+          </div>
           <div class="col-8 pr-0">
             <input
-              v-if="isEdit"
               type="text"
               class="font-weight-bold font-32 border-gray mw-100"
-              v-model="tourDetail.startLocation"
+              v-model="newTour.startLocation"
             />
-            <h3 v-else class="font-weight-bold mb-0 font-32 mb-0">
-              {{ tourDetail.startLocation }}
-            </h3>
           </div>
         </div>
         <div class="w-100 d-flex py-2 border-bottom-gray">
-          <div class="col-4 p-0">Phương tiện:</div>
+          <div class="col-4 p-0">
+            Phương tiện<span class="text-error">*</span>:
+          </div>
           <div class="col-8 pr-0">
             <input
-              v-if="isEdit"
               type="text"
               class="font-weight-bold font-32 border-gray mw-100"
-              v-model="tourDetail.vehicle"
+              v-model="newTour.vehicle"
             />
-            <h3 v-else class="font-weight-bold mb-0 font-32 mb-0">
-              {{ tourDetail.vehicle }}
-            </h3>
           </div>
         </div>
         <div class="w-100 d-flex py-2 border-bottom-gray">
           <div class="col-4 p-0">Số lượng:</div>
           <div class="col-8 pr-0">
             <input
-              v-if="isEdit"
               type="number"
               min="0"
               class="font-weight-bold font-32 border-gray mw-100"
-              v-model="tourDetail.currentSlot"
+              v-model="newTour.currentSlot"
             />
-            <h3 v-else class="font-weight-bold mb-0 font-32 mb-0">
-              {{ tourDetail.currentSlot }}
-            </h3>
           </div>
         </div>
         <div class="w-100 d-flex py-2 border-bottom-gray">
           <div class="col-4 p-0">Chi tiết:</div>
           <div class="col-8 pr-0">
             <input
-              v-if="isEdit"
               type="text"
               class="font-weight-bold font-32 border-gray mw-100"
-              v-model="tourDetail.info"
+              v-model="newTour.info"
             />
-            <h3 v-else class="font-weight-bold mb-0 font-32 mb-0">
-              {{ tourDetail.info }}
-            </h3>
           </div>
         </div>
-        <div class="w-100 d-flex justify-content-end">
-          <div class="btn w-fit" @click="updateTourHandler()">
+        <div v-show="isEdit" class="w-100 d-flex justify-content-end">
+          <div class="btn w-fit" @click="addTourHandler()">
             Cập nhật thông tin
           </div>
         </div>
@@ -192,44 +157,73 @@
 import { mapState, mapActions } from 'vuex'
 import { FORMAT } from '~/plugins/mixin'
 export default {
-  props: {
-    tour: {
-      type: Object,
-      default: () => null,
-    },
-  },
   mixins: [FORMAT],
   data() {
     return {
       isEdit: false,
-      tourDetail: null,
+      newTour: {
+        img: '',
+        title: '',
+        location: '',
+        time: 1,
+        startTime: Date.now(),
+        currentPrice: 0,
+        oldPrice: 0,
+        startLocation: '',
+        vehicle: '',
+        currentSlot: 0,
+        info: '',
+      },
+      newTourCompare: null,
     }
   },
   computed: {
     ...mapState({
       errorImage: (state) => state.common.errorImage,
     }),
+    isSameData() {
+      return (
+        Object.entries(this.newTour).toString() ===
+        Object.entries(this.newTourCompare).toString()
+      )
+    },
   },
-  created() {
-    this.tourDetail = { ...this.tour }
-  },
+  created() {},
   methods: {
     ...mapActions({
-      updateTour: 'tour/updateTour',
+      addTour: 'tour/addTour',
       setNotiContent: 'common/setNotiContent',
     }),
-    async updateTourHandler() {
-      const res = await this.updateTour(this.tourDetail)
-      if (res.success) {
-        this.setNotiContent(
-          `Cập nhật thông tin tour ${this.tourDetail.id} thành công`
-        )
-      } else {
-        this.setNotiContent(
-          `Cập nhật thông tin tour ${this.tourDetail.id} không thành công`
-        )
+    async addTourHandler() {
+      if (this.newTour.img == '') {
+        this.setNotiContent('Hãy thêm hình ảnh')
+        return
       }
-      this.$emit('close')
+      if (this.newTour.title == '') {
+        this.setNotiContent('Hãy thêm tên tour')
+        return
+      }
+      if (this.newTour.location == '') {
+        this.setNotiContent('Hãy thêm địa điểm')
+        return
+      }
+      if (this.newTour.startLocation == '') {
+        this.setNotiContent('Hãy thêm điểm bắt đầu')
+        return
+      }
+      if (this.newTour.vehicle == '') {
+        this.setNotiContent('Hãy thêm phương tiện')
+        return
+      }
+
+      const res = await this.addTour(this.newTour)
+      if (res.success) {
+        this.setNotiContent(`Thêm tour mới thành công`)
+        this.$emit('close')
+        this.$emit('addSuccess')
+      } else {
+        this.setNotiContent(`Thêm tour mói không thành công`)
+      }
     },
   },
 }
@@ -241,5 +235,11 @@ export default {
   max-height: 80vh;
   overflow-y: scroll;
   overflow-x: hidden;
+  & > * {
+    transition: all 200ms;
+  }
+  input {
+    text-transform: none;
+  }
 }
 </style>

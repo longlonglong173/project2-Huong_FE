@@ -9,6 +9,7 @@
         <h3 class="mt-3">
           <i class="fas fa-map-marker-alt"></i> {{ tour.location }}
         </h3>
+        <h3 class="font-32 font-weight-bold">{{ tour.title }}</h3>
         <p>
           {{ tour.info }}
         </p>
@@ -18,7 +19,7 @@
           <i
             v-for="(star, index) in tour.stars"
             :key="`star-${index}`"
-            class="fas fa-star"
+            class="fas fa-star color-orange"
           ></i>
         </div>
         <div class="price">
@@ -61,4 +62,13 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="scss">
+.price {
+  font-size: 1.5rem;
+  span {
+    font-size: 1rem;
+    text-decoration: line-through;
+    color: #aaa;
+  }
+}
+</style>

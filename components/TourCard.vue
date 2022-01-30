@@ -1,5 +1,5 @@
 <template>
-  <div v-if="tour" class="box h-100" :body-class="bodyClass">
+  <div v-if="tour" class="box h-100 tour-card" :body-class="bodyClass">
     <div class="content d-flex flex-column justify-content-between h-100">
       <div>
         <div
@@ -63,6 +63,12 @@ export default {
 </script>
 
 <style lang="scss">
+.tour-card {
+  &:hover {
+    transform: translateY(-3px);
+    background-color: rgb(241, 241, 241);
+  }
+}
 .price {
   font-size: 1.5rem;
   span {

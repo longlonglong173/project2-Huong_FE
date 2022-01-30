@@ -28,9 +28,27 @@
             <div class="col-4">Phương Tiện:</div>
             <div class="col-8 p-0">{{ tour.vehicle }}</div>
           </div>
-          <div class="d-flex py-3">
-            <div class="col-4">Giá:</div>
-            <div class="col-8 p-0">{{ formatPriceVnd(tour.currentPrice) }}</div>
+          <div v-if="tour.currentPrice == tour.oldPrice || tour.oldPrice == 0">
+            <div class="d-flex py-3">
+              <div class="col-4">Giá:</div>
+              <div class="col-8 p-0">
+                {{ formatPriceVnd(tour.currentPrice) }}
+              </div>
+            </div>
+          </div>
+          <div v-else>
+            <div class="d-flex py-3">
+              <div class="col-4">Giá hiện tại:</div>
+              <div class="col-8 p-0">
+                {{ formatPriceVnd(tour.currentPrice) }}
+              </div>
+            </div>
+            <div class="d-flex py-3">
+              <div class="col-4">Giá gốc:</div>
+              <div class="col-8 p-0" style="    text-decoration: line-through">
+                {{ formatPriceVnd(tour.oldPrice) }}
+              </div>
+            </div>
           </div>
           <div class="d-flex py-3">
             <div class="col-4">Ngày Khởi hành:</div>
@@ -43,6 +61,10 @@
           <div class="d-flex py-3">
             <div class="col-4">Số Chỗ Còn Nhận:</div>
             <div class="col-8 p-0">{{ tour.currentSlot }}</div>
+          </div>
+          <div class="d-flex py-3">
+            <div class="col-4">Chi tiết:</div>
+            <div class="col-8 p-0">{{ tour.info }}</div>
           </div>
         </div>
       </div>

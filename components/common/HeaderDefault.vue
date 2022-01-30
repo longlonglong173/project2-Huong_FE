@@ -5,7 +5,7 @@
     <nav class="navbar">
       <div class="navbar-item" @click="scollToElement('#home')">home</div>
       <div class="navbar-item" @click="scollToElement('#book')">đặt vé</div>
-      <div class="navbar-item" @click="scollToElement('#tours')">Tour</div>
+      <div class="navbar-item" @click="$router.push('/tours')">Tour</div>
       <div class="navbar-item" @click="scollToElement('#services')">
         Dịch vụ
       </div>

@@ -11,71 +11,48 @@
       <div class="controls">
         <span
           :class="['vid-btn', { active: videoIndex == 1 }]"
-          @click="videoIndex = 1"
+          @click="
+            videosSrc =
+              'https://storage.googleapis.com/loaz-store/videos/vid-1.mp4'
+            videoIndex = 1
+          "
         ></span>
         <span
           :class="['vid-btn', { active: videoIndex == 2 }]"
-          data-src="~assets/images/vid-2.mp4"
-          @click="videoIndex = 2"
+          @click="
+            videosSrc =
+              'https://storage.googleapis.com/loaz-store/videos/vid-2.mp4'
+            videoIndex = 2
+          "
         ></span>
         <span
           :class="['vid-btn', { active: videoIndex == 3 }]"
-          data-src="~assets/images/vid-3.mp4"
-          @click="videoIndex = 3"
+          @click="
+            videosSrc =
+              'https://storage.googleapis.com/loaz-store/videos/vid-3.mp4'
+            videoIndex = 3
+          "
         ></span>
         <span
           :class="['vid-btn', { active: videoIndex == 4 }]"
-          data-src="~assets/images/vid-4.mp4"
-          @click="videoIndex = 4"
+          @click="
+            videosSrc =
+              'https://storage.googleapis.com/loaz-store/videos/vid-4.mp4'
+            videoIndex = 4
+          "
         ></span>
         <span
           :class="['vid-btn', { active: videoIndex == 5 }]"
-          data-src="~assets/images/vid-5.mp4"
-          @click="videoIndex = 5"
+          @click="
+            videosSrc =
+              'https://storage.googleapis.com/loaz-store/videos/vid-5.mp4'
+            videoIndex = 5
+          "
         ></span>
       </div>
 
       <div class="video-container">
-        <video
-          v-if="videoIndex == 1"
-          src="~assets/images/vid-1.mp4"
-          id="video-slider"
-          loop
-          autoplay
-          muted
-        ></video>
-        <video
-          v-else-if="videoIndex == 2"
-          src="~assets/images/vid-2.mp4"
-          id="video-slider"
-          loop
-          autoplay
-          muted
-        ></video>
-        <video
-          v-else-if="videoIndex == 3"
-          src="~assets/images/vid-3.mp4"
-          id="video-slider"
-          loop
-          autoplay
-          muted
-        ></video>
-        <video
-          v-else-if="videoIndex == 4"
-          src="~assets/images/vid-4.mp4"
-          id="video-slider"
-          loop
-          autoplay
-          muted
-        ></video>
-        <video
-          v-else
-          src="~assets/images/vid-5.mp4"
-          id="video-slider"
-          loop
-          autoplay
-          muted
-        ></video>
+        <video :src="videosSrc" id="video-slider" loop autoplay muted></video>
       </div>
     </section>
 
@@ -107,15 +84,15 @@
             <h3>how many</h3>
             <input type="number" placeholder="number of guests" />
           </div> -->
-          <div class="inputBox">
+          <!-- <div class="inputBox">
             <h3>Ngày khởi hành</h3>
             <input type="date" />
           </div>
           <div class="inputBox">
             <h3>Ngày kết thúc</h3>
             <input type="date" />
-          </div>
-          <input type="submit" class="btn" value="book now" />
+          </div> -->
+          <input type="submit" class="btn" value="Đặt vé" />
         </form>
       </div>
     </section>
@@ -139,6 +116,9 @@
         >
           <TourCard :tour="tour" />
         </div>
+      </div>
+      <div class="flex-center mt-3">
+        <div class="btn" @click="$router.push('/tours')">Xem tất cả</div>
       </div>
     </section>
 
@@ -386,6 +366,7 @@ export default {
   data() {
     return {
       videoIndex: 1,
+      videosSrc: 'https://storage.googleapis.com/loaz-store/videos/vid-1.mp4',
       topToutList: [
         {
           id: '1',
@@ -456,37 +437,44 @@ export default {
         {
           img: 'https://statics.vinpearl.com/diem-du-lich-02_1632672193.jpg',
           location: 'Quảng Bình',
-          sumary: 'Quảng Bình là địa đến thú vị với bãi biển hoang sơ, hang động độc đáo, núi sông hùng vĩ cùng nhiều món đặc sản thơm ngon',
+          sumary:
+            'Quảng Bình là địa đến thú vị với bãi biển hoang sơ, hang động độc đáo, núi sông hùng vĩ cùng nhiều món đặc sản thơm ngon',
         },
         {
           img: 'https://statics.vinpearl.com/diem-du-lich-5_1632662666.jpg',
           location: 'Hà Nội',
-          sumary: 'Thủ đô Hà Nội ngàn năm văn hiến là một trong những nơi mà bất kỳ người Việt Nam nào cũng muốn được đặt chân đến một lần',
+          sumary:
+            'Thủ đô Hà Nội ngàn năm văn hiến là một trong những nơi mà bất kỳ người Việt Nam nào cũng muốn được đặt chân đến một lần',
         },
         {
           img: 'https://statics.vinpearl.com/diem-du-lich-6_1632662692.jpg',
           location: 'Đà Nẵng',
-          sumary: 'thành phố của nhiều cây cầu đẹp như cầu sông Hàn, cầu Rồng, cầu Thuận Phước, cầu tình yêu',
+          sumary:
+            'thành phố của nhiều cây cầu đẹp như cầu sông Hàn, cầu Rồng, cầu Thuận Phước, cầu tình yêu',
         },
         {
           img: 'https://statics.vinpearl.com/diem-du-lich-8_1632662742.jpg',
           location: 'Vũng Tàu',
-          sumary: 'Vũng Tàu có bờ biển trải dài, cảnh quan đẹp, cùng nhiều địa danh chứa đựng giá trị văn hóa',
+          sumary:
+            'Vũng Tàu có bờ biển trải dài, cảnh quan đẹp, cùng nhiều địa danh chứa đựng giá trị văn hóa',
         },
         {
           img: 'https://statics.vinpearl.com/diem-du-lich-9_1632662759.jpg',
           location: 'Nha Trang',
-          sumary: 'Vẻ đẹp tựa như tranh của địa điểm du lịch Nha Trang để lại ấn tượng khó phai trong lòng du khách',
+          sumary:
+            'Vẻ đẹp tựa như tranh của địa điểm du lịch Nha Trang để lại ấn tượng khó phai trong lòng du khách',
         },
         {
           img: 'https://statics.vinpearl.com/diem-du-lich-10_1632662781.jpg',
           location: 'Huế',
-          sumary: 'vẻ đẹp trầm mặc, mộng mơ cùng nhiều giá trị văn hóa, lịch sử lâu đời',
+          sumary:
+            'vẻ đẹp trầm mặc, mộng mơ cùng nhiều giá trị văn hóa, lịch sử lâu đời',
         },
         {
           img: 'https://statics.vinpearl.com/diem-du-lich-04_1632671710.jpg',
           location: 'Đà Lạt',
-          sumary: 'Với cảnh đẹp thơ mộng, khí hậu mát mẻ cùng nhiều món ăn ngon',
+          sumary:
+            'Với cảnh đẹp thơ mộng, khí hậu mát mẻ cùng nhiều món ăn ngon',
         },
       ],
     }

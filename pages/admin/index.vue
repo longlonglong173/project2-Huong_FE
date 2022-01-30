@@ -7,7 +7,7 @@
       <UserList />
     </div>
     <div v-show="navLeftSelected == 2">
-      <div class="font-64 text-center">Danh sách đặt vé</div>
+      <TicketList />
     </div>
   </div>
 </template>
@@ -15,6 +15,7 @@
 <script>
 import TourList from '~/components/admin/TourList.vue'
 import UserList from '~/components/admin/UserList.vue'
+import TicketList from '~/components/admin/TicketList.vue'
 
 import { mapState } from 'vuex'
 export default {
@@ -22,6 +23,7 @@ export default {
   components: {
     TourList,
     UserList,
+    TicketList,
   },
   computed: {
     ...mapState({

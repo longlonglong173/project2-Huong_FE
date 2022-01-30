@@ -719,6 +719,9 @@ header .search-bar-container label:hover {
 .top-0 {
   top: 0 !important;
 }
+.top-100 {
+  top: 100% !important;
+}
 
 .left-0 {
   left: 0 !important;
@@ -913,4 +916,19 @@ header .search-bar-container label:hover {
 
 .w-fit {
   width: fit-content !important;
+}
+
+.word-break-all {
+  word-break: break-all !important;
+}
+
+.info-row,
+.hover-gray {
+  &:hover {
+    background-color: #ddd;
+  }
+}
+
+.shadow {
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1) !important;
 }

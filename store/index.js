@@ -4,8 +4,7 @@ import user from './modules/user'
 import common from './modules/common'
 import tour from './modules/tour'
 import admin from './modules/admin'
-
-
+import ticket from './modules/ticket'
 
 Vue.use(Vuex)
 const store = () => {
@@ -14,7 +13,8 @@ const store = () => {
       user,
       common,
       tour,
-      admin
+      admin,
+      ticket
     },
   })
 }

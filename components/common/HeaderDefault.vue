@@ -3,10 +3,10 @@
     <div id="menu-bar" class="fas fa-bars"></div>
     <nuxt-link to="/" class="logo"><span>T</span>ravel</nuxt-link>
     <nav class="navbar">
-      <div class="navbar-item" @click="scollToElement('#home')">home</div>
-      <div class="navbar-item" @click="scollToElement('#book')">đặt vé</div>
+      <div class="navbar-item" @click="$router.push('/#home')">home</div>
+      <div class="navbar-item" @click="$router.push('/booking')">đặt vé</div>
       <div class="navbar-item" @click="$router.push('/tours')">Tour</div>
-      <div class="navbar-item" @click="scollToElement('#services')">
+      <div class="navbar-item" @click="$router.push('/#services')">
         Dịch vụ
       </div>
       <div class="navbar-item" @click="scollToElement('#gallery')">

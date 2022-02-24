@@ -1,5 +1,8 @@
 <template>
-  <div class="tour-box p-4 border-radius-16 bg-white font-24 w-100">
+  <div
+    class="tour-box p-4 border-radius-16 bg-white font-24 w-100"
+    :style="boxStyle"
+  >
     <div class="d-flex justify-content-between mb-4">
       <h3 class="font-32 font-weight-bold d-flex">Thêm vé đặt tour mới</h3>
       <div class="cursor-pointer" @click="$emit('close')">
@@ -92,7 +95,7 @@
           <input
             type="text"
             class="font-weight-bold font-32 border-gray w-100 px-2 br-8"
-            placeholder="Nhập giới tính"
+            placeholder="Nhập địa chỉ"
             v-model="newTicket.address"
           />
         </div>
@@ -150,6 +153,16 @@ import { mapActions } from 'vuex'
 import { FORMAT } from '~/plugins/mixin'
 export default {
   mixins: [FORMAT],
+  props: {
+    boxStyle: {
+      type: String,
+      default: '',
+    },
+    toHome: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       selectedMessage: 'Click để chọn tour',
@@ -177,14 +190,6 @@ export default {
         address: '',
       },
     }
-  },
-  computed: {
-    // isSameData() {
-    //   return (
-    //     Object.entries(this.newTicket).toString() ===
-    //     Object.entries(this.newTicketCompare).toString()
-    //   )
-    // },
   },
   async created() {
     const res = await this.getTourList({ index: 0, count: 20 })
@@ -220,8 +225,18 @@ export default {
           this.setNotiContent('Đặt vé thành công')
           // this.$emit('close')
           this.$emit('success')
+          if (this.toHome) {
+            const timeout = setTimeout(() => {
+              this.$router.push('/')
+              clearTimeout(timeout)
+            }, 1000)
+          }
         } else {
-          this.setNotiContent('Đặt vé không thành công')
+          if ((res.message = 'No Slot')) {
+            this.setNotiContent('Xin lỗi, tour đã hết vé')
+          } else {
+            this.setNotiContent('Đặt vé không thành công')
+          }
         }
       }
     },

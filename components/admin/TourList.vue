@@ -1,13 +1,34 @@
 <template>
   <div v-show="isDataFetched">
     <div class="font-64 text-center">Danh sách tour</div>
-    <div class="d-flex justify-content-end mb-3">
-      <div class="btn p-1 flex-center" @click="isOpenModalAddTour = true">
+    <div class="d-flex justify-content-between mb-3">
+      <div class="position-relative ml-4 d-flex align-items-center">
+        <input
+          type="text"
+          style="
+            border: 1px solid #333;
+            padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 0.5rem;
+          "
+          placeholder="Nhập tên tour"
+          v-model="keySearch"
+        />
+        <i
+          class="fas fa-search position-absolute"
+          style="top: 50%; left: 0.5rem; transform: translateY(-50%)"
+        />
+      </div>
+      <div class="btn p-1 flex-center m-0" @click="isOpenModalAddTour = true">
         <i class="fal fa-map-marker-plus mr-1 font-32"></i> Thêm tour mới
       </div>
     </div>
     <div class="d-flex flex-wrap">
-      <div v-for="tour in tourList" :key="`tour-${tour.id}`" class="col-3 mb-4">
+      <div
+        v-for="tour in tourListComputed"
+        :key="`tour-${tour.id}`"
+        class="col-3 mb-4"
+      >
         <TourCard
           :tour="tour"
           :isAdmin="true"
@@ -61,9 +82,20 @@ export default {
       tourDetail: null,
       isOpenModalTourDetail: false,
       isOpenModalAddTour: false,
+      keySearch: '',
     }
   },
-
+  computed: {
+    tourListComputed() {
+      if (this.keySearch == '') {
+        return this.tourList
+      }
+      return this.tourList.filter((item) => {
+        const title = item.title.trim().toLowerCase()
+        return title.includes(this.keySearch.trim().toLowerCase())
+      })
+    },
+  },
   methods: {
     ...mapActions({
       getTourList: 'tour/getTourList',

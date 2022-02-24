@@ -75,7 +75,7 @@
           <img src="~assets/images/book-img.svg" alt="" />
         </div>
 
-        <form action="">
+        <form>
           <div class="inputBox">
             <h3>điểm đến</h3>
             <input type="text" placeholder="Nhập điểm đến" />
@@ -92,7 +92,12 @@
             <h3>Ngày kết thúc</h3>
             <input type="date" />
           </div> -->
-          <input type="submit" class="btn" value="Đặt vé" />
+          <input
+            type="submit"
+            class="btn"
+            value="Đặt vé"
+            @click.prevent="$router.push('booking')"
+          />
         </form>
       </div>
     </section>

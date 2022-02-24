@@ -112,7 +112,7 @@
         </div>
       </div>
 
-       <div class="w-100 d-flex py-2 border-bottom-gray">
+      <div class="w-100 d-flex py-2 border-bottom-gray">
         <div class="col-3 p-0">
           Giới tính <span class="text-error">*</span>:
         </div>
@@ -190,7 +190,6 @@ export default {
     const res = await this.getTourList({ index: 0, count: 20 })
     if (res.success) {
       this.tourList = res.data
-      console.log(this.tourList)
     } else {
       this.$router.push('/admin')
     }
@@ -219,9 +218,8 @@ export default {
         const res = await this.datVe(formData)
         if (res.success) {
           this.setNotiContent('Đặt vé thành công')
-          setTimeout(() => {
-            this.$router.push('/')
-          }, 3000)
+          // this.$emit('close')
+          this.$emit('success')
         } else {
           this.setNotiContent('Đặt vé không thành công')
         }

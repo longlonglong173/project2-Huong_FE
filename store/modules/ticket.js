@@ -13,7 +13,6 @@ export default {
     async getTicketList() {
       try {
         const res = await axiosClient.get('/layDanhSachVe')
-        console.log(res)
         return {
           ...res,
           success: true,

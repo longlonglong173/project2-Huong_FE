@@ -63,7 +63,7 @@
         :ticket="ticketDetail"
         @close="closeDetailHandler()"
         @update="getData()"
-        @delete="getData()"
+        @success="getData()"
       />
     </Modal>
   </div>
@@ -105,6 +105,8 @@ export default {
       this.ticketDetail = null
     },
     async getData() {
+      this.isOpenModalEditTicket = false
+      this.isOpenModalAddTicket = false
       const res = await this.getTicketList()
       if (res.success) {
         this.ticketList = res.data

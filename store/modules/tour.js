@@ -93,7 +93,6 @@ export default {
       }
     ) {
       try {
-        console.log('ok')
         const res = await axiosClient.post('/themTour', {
           hinhAnh: img,
           ten: title,

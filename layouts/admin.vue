@@ -35,6 +35,16 @@
       >
         <i class="fal fa-ticket-alt"></i> Tikets
       </div>
+      <div
+        :class="[
+          'nav-item font-32 text-white border-bottom-gray w-100 mb-4 cursor-pointer',
+          navLeftSelected == 3 ? 'nav-selected' : '',
+        ]"
+        @click="setNavLeftSelected(3)"
+        title="Thông kê"
+      >
+        <i class="fal fa-chart-line"></i> Statistics
+      </div>
     </div>
     <nuxt class="content-box" />
   </div>
@@ -63,7 +73,7 @@ export default {
 
 <style lang="scss" scoped>
 .admin-container {
-  --navLeftWidth: 100px;
+  --navLeftWidth: 120px;
   margin-left: var(--navLeftWidth);
   .nav-left {
     left: 0;

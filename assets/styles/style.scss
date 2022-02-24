@@ -121,7 +121,7 @@ header .search-bar-container {
   border-top: 0.1rem solid rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;
-  z-index: 1001;
+  z-index: 1;
   clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
 }
 
@@ -727,6 +727,10 @@ header .search-bar-container label:hover {
   left: 0 !important;
 }
 
+.left-50 {
+  left: 50% !important;
+}
+
 .translate-y-4px {
   transform: translateY(0.25rem);
 }
@@ -741,6 +745,10 @@ header .search-bar-container label:hover {
 
 .translate-y-16px {
   transform: translateY(1rem);
+}
+
+.translate-x-m50 {
+  transform: translateX(-50%) !important;
 }
 
 .flex-center {
@@ -931,4 +939,8 @@ header .search-bar-container label:hover {
 
 .shadow {
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1) !important;
+}
+
+.text-transform-0 {
+  text-transform: none !important;
 }

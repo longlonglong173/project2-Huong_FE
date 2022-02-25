@@ -1,7 +1,24 @@
 <template>
   <div v-if="ticketList" class="tickert-list">
     <div class="font-64 text-center">Danh sách vé đặt tour</div>
-    <div class="d-flex justify-content-end mb-3">
+    <div class="d-flex justify-content-between mb-3">
+      <div class="position-relative d-flex align-items-center">
+        <input
+          type="number"
+          style="
+            border: 1px solid #333;
+            padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 0.5rem;
+          "
+          placeholder="Nhập mã tour"
+          v-model="keySearch"
+        />
+        <i
+          class="fas fa-search position-absolute"
+          style="top: 50%; left: 0.5rem; transform: translateY(-50%)"
+        />
+      </div>
       <div class="btn p-1 flex-center" @click="isOpenModalAddTicket = true">
         <i class="fal fa-map-marker-plus mr-1 font-32"></i> Thêm vé đặt tour mới
       </div>
@@ -16,7 +33,7 @@
         <th class="col-3 p-1">Ghi chú</th>
       </tr>
       <tr
-        v-for="ticket in ticketList"
+        v-for="ticket in ticketListComputed"
         :key="`ticket-${ticket.ma}`"
         :title="`Click để xem chi tiết thông tin vé ${ticket.ma}`"
         class="border-bottom-gray cursor-pointer info-row"
@@ -86,6 +103,7 @@ export default {
       isOpenModalEditTicket: false,
       isOpenModalAddTicket: false,
       ticketDetail: null,
+      keySearch: '',
     }
   },
   mixins: [FORMAT],
@@ -94,6 +112,20 @@ export default {
     if (res.success) {
       this.ticketList = res.data
     }
+  },
+  computed: {
+    ticketListComputed() {
+      if (this.keySearch == '') {
+        return this.ticketList
+      }
+      return this.ticketList.filter((item) => {
+        if (item.tour.ma) {
+          const id = item.tour.ma.toString().trim()
+          return id.includes(this.keySearch.trim())
+        }
+        return false
+      })
+    },
   },
   methods: {
     ...mapActions({
